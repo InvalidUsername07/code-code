@@ -128,5 +128,5 @@ class addition{
         }   
 };
 int main(){
-    addition a;
+   
 }
