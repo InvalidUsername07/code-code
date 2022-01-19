@@ -1,8 +1,5 @@
 #include <iostream>
 using namespace std;
-#include <iostream>
-using namespace std;
-class EMPTY{};
 class node{
     public:
         int coeff;
@@ -40,6 +37,7 @@ class list{
             cout<<endl;
         }
 };
+
 class addition{
     private:
         list p,q;
@@ -60,19 +58,20 @@ class addition{
                 cin>>c>>e;
                 q.insert_beginning(c,e);
             }
+            
         } 
         void A1(){
             Q=q.head->next;
+            Q1=q.head;
             P=p.head->next;
         }
         void A2(){
-            if(P->abc()<Q->abc()){
-                while(P->abc()<Q->abc()){
+            while(P->abc()<Q->abc()){
                     Q1=Q;
                     Q=Q->next;
-                }
             }
-            else if(P->abc()==Q->abc()){
+            
+            if(P->abc()==Q->abc()){
                 A3();
             }
             else if(P->abc()>Q->abc()){
@@ -80,7 +79,7 @@ class addition{
             }
         }
         void A3(){
-            if(P->expo<0)//terminate();
+            if(P->expo==-1)//terminate();
             {
                 show_result();
             }
@@ -107,7 +106,7 @@ class addition{
         }
         void A5(){
             Q2=new node[1];
-            Q2->coeff=P->coeff;
+            Q2->coeff=P->coeff; 
             Q2->expo=P->expo;
             Q2->next=Q;
             Q1->next=Q2;
@@ -123,10 +122,10 @@ class addition{
             A1();
             A2();
         }
-        ~addition(){
-            method();
-        }   
+         
 };
 int main(){
-   
+    addition a;
+    a.method();
+    
 }
