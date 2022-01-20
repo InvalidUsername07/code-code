@@ -9,10 +9,10 @@ class node{
 };
 class Queue{
     private:
-        node* head;
+        node* head, *tail; //adding tail does enqueue in constant time.
     public:
         Queue(){
-            head=NULL;
+            head=NULL; tail = NULL;
         }
         node* search(int k){
             node* x=head;
@@ -23,19 +23,20 @@ class Queue{
         }
         
         void enqueue(int k){
-            node* x=head;
-            node *y=new node[1];
-            y->key=k;
-            y->next=NULL;
-            if (x==NULL){
-                head=y;
-            }
-            else{
-                while(x->next!=NULL){
-                    x=x->next;
-                }
-                x->next=y;
-            }
+           
+            if ( head == NULL  ) { //if empty
+                tail = new node;
+                tail->k = k;
+                tail->next = NULL; 
+                head = tail;
+
+           } else {
+                node* prevtail = tail;
+                tail = new node;
+                tail->key = k;
+                prevtail->next = tail;
+                tail->next = NULL;
+           }
         }
         
         
