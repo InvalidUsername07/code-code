@@ -9,51 +9,37 @@ class node{
 };
 class Queue{
     private:
+        node* front;
+        node* rear;
         node* head;
     public:
         Queue(){
-            head=NULL;
+            head=new node[1];
+            front=rear=head;
+            head->next=NULL;
         }
-        node* search(int k){
-            node* x=head;
-            while(x!=NULL && x->key!=k){
-                x=x->next;
-            }
-            return x;
-        }
-        
         void enqueue(int k){
-            node* x=head;
-            node *y=new node[1];
-            y->key=k;
-            y->next=NULL;
-            if (x==NULL){
-                head=y;
-            }
-            else{
-                while(x->next!=NULL){
-                    x=x->next;
-                }
-                x->next=y;
-            }
-        }
-        
-        
+            rear->key=k;
+            node *x=new node[1];
+            rear->next=x;
+            rear=x;
+            rear->next=NULL;
+        }        
         int dequeue(){
-            if(head==NULL){
+            if(front==rear){
                 cout<<"underflow"<<endl;
                 throw EMPTY();
             }
-            int a=head->key;
-            head=head->next;
+            int a=front->key;
+            front=front->next;
             return a;
         }
         void show(){
-            node* x=head;
+            node* x=front;
             do{
                 cout<<x->key<<"\t";
                 x=x->next;
-            }while(x!=NULL);
+            }while(x!=rear);
         }
 };
 void queue_as_list(){
