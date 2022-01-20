@@ -15,7 +15,7 @@ class Stack{
             head=NULL;
         }
         void push(int k){
-            node* x=new node[1];
+            node* x = new node; //why array?
             x->next=head;
             x->key=k;
             head=x;            
@@ -29,7 +29,7 @@ class Stack{
             else{
                 head=x->next;               
                 int a= x->key;
-                delete []x;
+                delete x;
                 return a;
             }
         }
